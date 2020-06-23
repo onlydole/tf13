@@ -16,7 +16,7 @@ variable "region" {
   default     = "us-west-2"
 }
 
-# Step 5 - Custom Validation
+# Step 4 - Custom Validation
 # variable "ami_id" {
 #   type = string
 

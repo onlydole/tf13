@@ -20,11 +20,11 @@ module "ec2_cluster" {
   # Step 1 (default)
   subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
 
-  # Step 2
+  # Step 2 - for_each example
   # for_each = data.aws_subnet_ids.all.ids
   # subnet_id     = each.value
 
-  # Step 3
+  # Step 3 - depends_on example
   # depends_on = [aws_s3_bucket.top_secret_data]
 
   source  = "terraform-aws-modules/ec2-instance/aws"
@@ -42,7 +42,7 @@ module "ec2_cluster" {
   }
 }
 
-# Step 3
+# Step 3 - depends_on example
 # resource "aws_s3_bucket" "top_secret_data" {
 #   bucket_prefix = "top-secret-data"
 #   acl    = "private"
