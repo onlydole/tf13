@@ -16,9 +16,8 @@ data "aws_ami" "amazon_linux_2" {
 }
 
 module "ec2_cluster" {
-
   # Step 1 (default)
-  subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
+  subnet_id = tolist(data.aws_subnet_ids.all.ids)[0]
 
   # Step 2 - for_each example
   # for_each = data.aws_subnet_ids.all.ids
@@ -30,12 +29,11 @@ module "ec2_cluster" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 2.0"
 
-  name          = var.cluster_name
-  ami           = data.aws_ami.amazon_linux_2.id
+  name = var.cluster_name
+  ami  = data.aws_ami.amazon_linux_2.id
 
   instance_type = "t3.micro"
   monitoring    = true
-  
 
   tags = {
     Terraform = "true"
